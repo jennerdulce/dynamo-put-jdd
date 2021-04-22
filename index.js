@@ -7,7 +7,7 @@ exports.handler = async (event) => {
   console.log('EVENT', event.body)
   try {
     const body = JSON.parse(event.body)
-    let id = body.id;
+    const id = event.queryStringParameters.id
 
     if (body.name && body.phone) {
       await clientsModel.update({ "id": id }, {"name": body.name}, {"phone": body.phone})
